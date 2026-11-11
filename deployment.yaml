@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: emirates-pay
   namespace: default
+  annotations:
+    gitops-demo: "first-change"
 spec:
   replicas: 1
   selector:
