@@ -1,0 +1,25 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emirates-pay
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emirates-pay
+  template:
+    metadata:
+      labels:
+        app: emirates-pay
+    spec:
+      containers:
+        - name: emirates-pay
+          image: emirates-pay:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SECRET_KEY
+              value: "local-demo-only-change-me"
