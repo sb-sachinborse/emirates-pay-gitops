@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        APP_VERSION: "1.0.0"
+        GIT_SHA: "local"
+    ports:
+      - "8080:8080"
+    environment:
+      SECRET_KEY: "local-demo-only-change-me"   # never reuse; real value comes from Secret Manager
+      # FAULT_RATE: "0.3"                       # uncomment to inject 30% failures
+      # FAULT_LATENCY_MS: "400"                 # uncomment to add latency
+    volumes:
+      - wallet-data:/data
+volumes:
+  wallet-data:

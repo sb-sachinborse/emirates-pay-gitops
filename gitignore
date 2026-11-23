@@ -1,0 +1,24 @@
+# Byte-compiled / cache & venvs
+__pycache__/
+*.py[cod]
+.env
+.venv/
+env/
+venv/
+
+# Build & distribution
+build/
+dist/
+*.egg-info/
+
+# Testing & linters
+.pytest_cache/
+.coverage
+.mypy_cache/
+
+# IDEs & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

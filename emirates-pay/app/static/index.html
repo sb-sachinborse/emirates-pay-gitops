@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emirates Pay</title>
+  <meta name="description" content="Demo wallet in AED with 5% VAT on fees. Arabic and English.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">
+        <span class="brand-name">Emirates Pay</span>
+        <span class="brand-sub" data-i18n="tagline">Digital wallet in UAE dirhams</span>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="lang-toggle" class="chip" aria-label="Change language">عربي</button>
+        <button type="button" id="signout" class="chip" data-i18n="signOut" hidden>Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p id="fault-banner" class="banner" role="alert" hidden data-i18n="faultBanner">Fault injection is on. Some requests will fail on purpose.</p>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <!-- Signed out -->
+    <section id="auth" class="panel auth">
+      <h1 data-i18n="signInTitle">Sign in with UAE Pass (demo)</h1>
+      <p class="muted" data-i18n="demoNote">Demo sign-in only. There is no real UAE Pass connection and no real money.</p>
+      <form id="login-form" novalidate>
+        <label for="login-name" data-i18n="name">Name</label>
+        <input id="login-name" name="name" autocomplete="name" maxlength="80" required>
+        <label for="login-email" data-i18n="email">Email</label>
+        <input id="login-email" name="email" type="email" autocomplete="email" dir="ltr" required>
+        <button class="btn" type="submit" data-i18n="signIn">Sign in</button>
+      </form>
+    </section>
+
+    <!-- Signed in -->
+    <div id="dash" class="dash" hidden>
+      <div class="col">
+        <section class="balance" aria-labelledby="bal-label">
+          <p id="bal-label" class="bal-label" data-i18n="balance">Available balance</p>
+          <p id="balance" class="bal-amount">0.00</p>
+          <p class="bal-wallet"><span data-i18n="wallet">Wallet number</span>
+            <bdi id="wallet-no" dir="ltr" class="wallet-no"></bdi></p>
+          <p id="user-name" class="bal-user"></p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="addFunds">Add funds (demo)</h2>
+          <form id="topup-form" novalidate>
+            <label for="topup-amount" data-i18n="amount">Amount (AED)</label>
+            <input id="topup-amount" inputmode="decimal" autocomplete="off" dir="ltr" required>
+            <button class="btn btn-quiet" type="submit" data-i18n="add">Add funds</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="send">Send money</h2>
+          <form id="send-form" novalidate>
+            <label for="send-to" data-i18n="toWallet">Recipient wallet number</label>
+            <input id="send-to" placeholder="EP0000000000" autocomplete="off" dir="ltr" maxlength="12" required>
+            <label for="send-amount" data-i18n="amount">Amount (AED)</label>
+            <input id="send-amount" inputmode="decimal" autocomplete="off" dir="ltr" required>
+            <label for="send-note" data-i18n="note">Note (optional)</label>
+            <input id="send-note" maxlength="140" autocomplete="off">
+            <dl id="quote" class="quote" hidden>
+              <div><dt data-i18n="fee">Fee</dt><dd id="q-fee"></dd></div>
+              <div><dt data-i18n="vat">VAT 5% on fee</dt><dd id="q-vat"></dd></div>
+              <div class="quote-total"><dt data-i18n="total">Total deducted</dt><dd id="q-total"></dd></div>
+            </dl>
+            <button class="btn" type="submit" data-i18n="sendBtn">Send</button>
+          </form>
+        </section>
+      </div>
+
+      <section class="col panel" aria-labelledby="act-title">
+        <h2 id="act-title" data-i18n="activity">Activity</h2>
+        <p id="empty" class="muted" data-i18n="empty">No activity yet. Add funds to get started.</p>
+        <ul id="txns" class="txns"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="wrap foot">
+    <span id="version" class="muted"></span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
